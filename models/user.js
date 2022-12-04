@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 //no sequelize connection yet
 
+let saltRounds = 10;
+
 class User extends Model {
     checkPassword(loginPassword) {
         return bcrypt.compareSync(loginPassword, this.password);
@@ -37,6 +39,14 @@ User.init(
             allowNull: false,
             validate: {
                 len: [8]
+            }
+        }
+    },
+    {
+        hooks: {
+            beforeCreate: async (newUserData) => {
+                newUserData.password = await bcrypt.hash(newUserData.password, saltRounds)
+                return newUserData;
             }
         }
     }

@@ -21,7 +21,6 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                notEmpty: true,
                 len: [4,32]
             }
         }

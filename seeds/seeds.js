@@ -57,7 +57,7 @@ let Comments = [
 
 const runSeeds = async () => {
     await sequelize.sync({ force: true})
-    const users = await User.bulkCreate(users,
+    const users = await User.bulkCreate(Users,
         {
             individualHooks: true,
             returning: true

@@ -47,8 +47,17 @@ User.init(
             beforeCreate: async (newUserData) => {
                 newUserData.password = await bcrypt.hash(newUserData.password, saltRounds)
                 return newUserData;
+            },
+            beforeUpdate: async (userData) => {
+                userData.password = await bcrypt.hash(userData.password, saltRounds)
+                return userData;
             }
-        }
+        },
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: "user"
     }
 )
 

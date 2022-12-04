@@ -34,6 +34,27 @@ let Posts = [
     }
 ];
 
+let Comments = [
+    {
+        content: "Wow good work!"
+    },
+    {
+        content: "No way!"
+    },
+    {
+        content: "That's crazy."
+    },
+    {
+        content: "I sent you a message!"
+    },
+    {
+        content: "Please remove this post."
+    },
+    {
+        content: "I'm impressed!"
+    },
+];
+
 const runSeeds = async () => {
     await sequelize.sync({ force: true})
     const users = await User.bulkCreate(users,
@@ -49,6 +70,14 @@ const runSeeds = async () => {
             user_id: Users[Math.floor(Math.random()* Users.length)].id
         })
     }
+
+    for(let seedComment of Comments) {
+        await Comment.create({
+            ...seedComment,
+            user_id: Users[Math.floor(Math.random()* Users.length)].id
+        })
+    }
+
     process.exit(0);
 };
 

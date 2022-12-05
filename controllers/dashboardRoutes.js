@@ -17,7 +17,7 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/new", withAuth, async (req, res) => {
     try {
-
+        //render new post
     } catch (err) {
         //redirect 
     }
@@ -25,7 +25,13 @@ router.get("/new", withAuth, async (req, res) => {
 
 router.get("/edit/:id", withAuth, async (req, res) => {
     try {
+        let postData = await Post.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
 
+        //render edit post
     } catch (err) {
         //redirect 
     }

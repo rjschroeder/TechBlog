@@ -16,7 +16,7 @@ Comment.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        comment_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: "post",

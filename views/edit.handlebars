@@ -1,0 +1,22 @@
+<div class="card text-center border-info m-3">
+    <div class="card-header">
+        <p>Edit Post</p>
+    </div>
+    <div class="card-body">
+        <form id="editPostForm">
+            <input type="hidden" name="postId" value="{{post.id}}"/>
+            <div class="form-group">
+                <label for="title-input">Title</label>
+                <input type="text" class="form-control" id="title-input" value="{{post.title}}">
+            </div>
+            <div class="form-group">
+                <label for="content-input">Body</label>
+                <input type="text" class="form-control" id="content-input" value="{{post.content}}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+
+            <button type="button" class="btn btn-danger" id="deletePostButton">Delete</button>
+        </form>
+    </div>
+</div>
+<script src="../public/js/edit.js"></script>

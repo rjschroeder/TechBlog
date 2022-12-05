@@ -2,7 +2,7 @@ let newCommentForm = document.querySelector("#newCommentForm");
 
 let newPost = async function(event) {
     event.preventDefault();
-    let ent_post_id = document.querySelector("#post_id");
+    let ent_post_id = document.querySelector("#post-id");
     let enteredContent = document.querySelector("#content-input");
 
     let response = await fetch("/api/comments/new", {

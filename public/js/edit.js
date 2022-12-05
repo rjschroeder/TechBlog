@@ -1,4 +1,4 @@
-let editPostForm = document.querySelector("#editPostButton");
+let editPostForm = document.querySelector("#editPostForm");
 let deletePostButton = document.querySelector("#deletePostButton");
 let post_id = document.querySelector("#postID");
 

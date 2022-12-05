@@ -23,4 +23,4 @@ let signup = async function(event) {
     }
 }
 
-loginForm.addEventListener("submit", signup);
+signupForm.addEventListener("submit", signup);

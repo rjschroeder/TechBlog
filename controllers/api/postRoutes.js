@@ -14,7 +14,12 @@ router.post("/new", withAuth, async (req, res) => {
 
 router.put("/:id", withAuth, async (req, res) => {
     try {
-
+        let updateData = await Post.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        res.status(200).json({ message: "Success!"})
     } catch (err) {
         res.status(500).json(err);
     }

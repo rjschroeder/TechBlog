@@ -26,7 +26,7 @@ router.get("/posts/:id", async (req, res) => {
 
         if(postData) {
             let post = postData.get({plain:true});
-            res.render("post", {
+            res.render("onePost", {
                 post
             })
         } else {

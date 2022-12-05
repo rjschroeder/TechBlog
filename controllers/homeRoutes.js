@@ -2,7 +2,7 @@ const router = require("express").Router();
 const {Comment, Post, User} = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         let postData = await Post.findAll({
             include: [User]
@@ -13,7 +13,7 @@ router.get("/", withAuth, async (req, res) => {
     }
 })
 
-router.get("/post/:id", withAuth, async (req, res) => {
+router.get("/post/:id", async (req, res) => {
     try {
         let postData = await Post.findOne({
             where: {
@@ -33,7 +33,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
     }
 })
 
-router.get("/login", withAuth, async (req, res) => {
+router.get("/login", async (req, res) => {
     try {
         if(req.session.loggedIn) {
             res.redirect("/");
@@ -45,7 +45,7 @@ router.get("/login", withAuth, async (req, res) => {
     }
 })
 
-router.get("/signup", withAuth, async (req, res) => {
+router.get("/signup", async (req, res) => {
     try {
         if(req.session.loggedIn) {
             res.redirect("/");

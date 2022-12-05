@@ -31,6 +31,15 @@ router.post("/login", async (req, res) => {
             res.status(500).json({ message: "Invalid username or password"})
         }
 
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+            res.status(200).json({ 
+                user: userData,
+                message: "Successful login!"
+            })
+        })
+
     } catch (err) {
         req.status(500).json(err);
     }

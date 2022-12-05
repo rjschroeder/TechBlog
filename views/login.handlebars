@@ -4,17 +4,17 @@
     </div>
     <div class="card-body">
         <form>
-            <div>
-                <label></label>
-                <input>
-                <small></small>
+            <div class="form-group">
+                <label for="username-input">Username</label>
+                <input type="text" class="form-control" id="username-input" placeholder="Enter username">
+                <small class="form-text text-muted">Usernames must be between 4 and 32 chars</small>
             </div>
-            <div>
-                <label></label>
-                <input>
-                <small></small>
+            <div class="form-group">
+                <label for="password-input">Password</label>
+                <input type="password" class="form-control" id="password-input" placeholder="Password">
+                <small class="form-text text-muted">Passwords must be at least 8 chars</small>
             </div>
-            <button type="submit">Log in</button>
+            <button type="submit" class="btn btn-primary">Log in</button>
         </form>
     </div>
 </div>

@@ -19,7 +19,7 @@ router.put("/:id", withAuth, async (req, res) => {
                 id: req.params.id
             }
         })
-        res.status(200).json({ message: "Success!"})
+        res.status(200).json(updateData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -27,7 +27,16 @@ router.put("/:id", withAuth, async (req, res) => {
 
 router.delete("/:id", withAuth, async (req, res) => {
     try {
+        let deleteData = await Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
 
+        if (!deleteData) {
+            res.status(400).json({message: "Couldn't find this project."})
+        }
+        res.status(200).json(deleteData);
     } catch (err) {
         res.status(500).json(err);
     }

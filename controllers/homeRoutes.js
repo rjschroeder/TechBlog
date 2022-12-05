@@ -7,7 +7,9 @@ router.get("/", async (req, res) => {
         let postData = await Post.findAll({
             include: [{ all: true, nested: true }]
         })
-        res.status(200).json(postData);
+
+        let posts = postData.map((post) => post.get({plain:true}))
+        res.render("feed", {posts})
     } catch (err) {
         res.status(500).json(err);
     }

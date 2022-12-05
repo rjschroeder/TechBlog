@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <form>
-            <input type="hidden" name="post-id" value="{{post.id}}"/>
+            <input type="hidden" name="postId" value="{{post.id}}"/>
             <div class="form-group">
                 <label for="title-input">Title</label>
                 <input type="text" class="form-control" id="title-input" value="{{post.title}}">
@@ -13,9 +13,9 @@
                 <label for="content-input">Body</label>
                 <input type="text" class="form-control" id="content-input" value="{{post.content}}">
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary" id="editPostButton">Update</button>
 
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-danger" id="deletePostButton">Delete</button>
         </form>
     </div>
 </div>

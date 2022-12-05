@@ -10,7 +10,8 @@ let newPost = async function(event) {
         body: JSON.stringify({
             post_id: ent_post_id.value,
             content: enteredContent.value
-        })
+        }),
+        headers: {"Content-Type": "application/json"}
     })
 
     if(response.ok) {

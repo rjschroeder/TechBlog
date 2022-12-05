@@ -10,7 +10,8 @@ let login = async function(event) {
         body: JSON.stringify({
             username: enteredUsername.value,
             password: enteredPassword.value
-        })
+        }),
+        headers: {"Content-Type": "application/json"}
     })
 
     if(response.ok) {

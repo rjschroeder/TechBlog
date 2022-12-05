@@ -12,7 +12,8 @@ let signup = async function(event) {
             username: enteredUsername.value,
             email: enteredEmail.value,
             password: enteredPassword.value
-        })
+        }),
+        headers: {"Content-Type": "application/json"}
     })
 
     if(response.ok) {

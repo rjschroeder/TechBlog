@@ -63,20 +63,22 @@ const runSeeds = async () => {
             returning: true
         }
     )
-
     for(let seedPost of Posts) {
         await Post.create({
             ...seedPost,
-            user_id: Users[Math.floor(Math.random()* Users.length)].id
+            user_id: users[Math.floor(Math.random()* users.length)].id
         })
     }
 
     for(let seedComment of Comments) {
+        let posts = await Post.findAll();
         await Comment.create({
             ...seedComment,
-            user_id: Users[Math.floor(Math.random()* Users.length)].id
+            post_id: posts[Math.floor(Math.random()* posts.length)].id,
+            user_id: users[Math.floor(Math.random()* users.length)].id
         })
     }
+
 
     process.exit(0);
 };

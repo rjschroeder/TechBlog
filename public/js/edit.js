@@ -22,4 +22,17 @@ let editPost = async function(event) {
     }
 }
 
+let deletePost = async () => {
+    await fetch(`/api/posts/${post_id.value}`, {
+        method: "DELETE"
+    })
+
+    if(response.ok) {
+        document.location.replace("/dashboard");
+    } else {
+        console.log("delete post failed");
+    }
+}
+
 editPostForm.addEventListener("submit", editPost);
+deletePostButton.addEventListener("click", deletePost);

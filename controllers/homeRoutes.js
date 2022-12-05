@@ -23,7 +23,15 @@ router.get("/post/:id", async (req, res) => {
             },
             include: [{ all: true, nested: true }]
         })
-        res.status(200).json(postData);
+
+        if(postData) {
+            let post = postData.get({plain:true});
+            res.render("post", {
+                post
+            })
+        } else {
+            res.status(500)
+        }
     } catch (err) {
         res.status(500).json(err);
     }
@@ -35,7 +43,7 @@ router.get("/login", (req, res) => {
             res.redirect("/");
             return;
         }
-        res.status(200).json({ message: "will login here"})
+        res.render("login");
     } catch (err) {
         res.status(500).json(err);
     }
@@ -47,7 +55,7 @@ router.get("/signup", (req, res) => {
             res.redirect("/");
             return;
         }
-        res.status(200).json({ message: "will signup here"})
+        res.render("signup");
     } catch (err) {
         res.status(500).json(err);
     }

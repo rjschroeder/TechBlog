@@ -12,13 +12,14 @@ let editPost = async function(event) {
         body: JSON.stringify({
             title: enteredTitle.value,
             content: enteredContent.value
-        })
+        }),
+        headers: {"Content-Type": "application/json"}
     })
 
     if(response.ok) {
         document.location.replace("/dashboard");
     } else {
-        console.log("edit post failed");
+        alert("edit post failed");
     }
 }
 

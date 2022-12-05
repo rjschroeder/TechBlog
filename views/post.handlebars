@@ -1,0 +1,31 @@
+<div class="p-3">
+    <div class="card text-center border-info m-3">
+        <div class="card-header">
+            <h5 class="card-title">{{title}}</h5>
+            <p>Posted by {{post.User.username}} on {{format_date post.createdAt}}</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{post.content}}</p>
+        </div>
+        <div class="card-footer text-muted">
+            
+        </div>
+    </div>
+    {{#if post.Comments}}
+        <div class="card">
+            <div class="card-header">
+                <h3>Comments</h3>
+            </div>
+        </div>
+        {{#each}}
+            <div class="card border-info m-2">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{content}}</p>
+                        <footer class="blockquote-footer">{{User.username}}, <em>{{format_date createdAt}}</em></footer>
+                    </blockquote>
+                </div>
+            </div>
+        {{/each}}
+    {{/if}}
+</div>

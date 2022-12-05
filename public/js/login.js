@@ -13,4 +13,11 @@ let login = async function(event) {
         })
     })
 
+    if(response.ok) {
+        document.location.replace("/dashboard");
+    } else {
+        console.log("login failed");
+    }
 }
+
+loginForm.addEventListener("submit", login);

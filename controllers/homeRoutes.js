@@ -4,7 +4,10 @@ const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, async (req, res) => {
     try {
-
+        let postData = await Post.findAll({
+            include: [User]
+        })
+        res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
     }

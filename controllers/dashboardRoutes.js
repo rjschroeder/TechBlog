@@ -21,9 +21,11 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/new", withAuth, async (req, res) => {
     try {
-        //render new post
+        res.render("new", {
+            layout: "dashboard"
+        })
     } catch (err) {
-        //redirect 
+        res.redirect("main")
     }
 })
 

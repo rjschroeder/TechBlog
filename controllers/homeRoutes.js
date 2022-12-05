@@ -48,8 +48,9 @@ router.get("/login", (req, res) => {
         if(req.session.loggedIn) {
             res.redirect("dashboard");
             return;
+        } else {
+            res.render("login");
         }
-        res.render("login");
     } catch (err) {
         res.status(500).json(err);
     }

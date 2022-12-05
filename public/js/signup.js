@@ -1,4 +1,5 @@
 let signupf = async function(event) {
+    event.preventDefault();
     let enteredUsername = document.querySelector("#username-input-signup");
     let enteredEmail = document.querySelector("#email-input-signup");
     let enteredPassword = document.querySelector("#password-input-signup");

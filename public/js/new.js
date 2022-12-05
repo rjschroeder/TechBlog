@@ -17,7 +17,7 @@ let newPost = async function(event) {
     if(response.ok) {
         document.location.replace("/dashboard");
     } else {
-        console.log("new post failed");
+        alert("new post failed");
     }
 }
 

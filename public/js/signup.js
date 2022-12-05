@@ -19,7 +19,7 @@ let signup = async function(event) {
     if(response.ok) {
         document.location.replace("/dashboard");
     } else {
-        console.log("sign in failed");
+        alert("sign in failed");
     }
 }
 

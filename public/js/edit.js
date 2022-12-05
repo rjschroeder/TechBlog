@@ -19,7 +19,7 @@ let editPost = async function(event) {
     if(response.ok) {
         document.location.replace("/dashboard");
     } else {
-        console.log("edit post failed");
+        alert("edit post failed");
     }
 }
 

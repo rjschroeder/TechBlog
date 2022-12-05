@@ -17,7 +17,7 @@ let newPost = async function(event) {
     if(response.ok) {
         document.location.reload();
     } else {
-        console.log("new comment failed");
+        alert("new comment failed");
     }
 }
 

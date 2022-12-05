@@ -21,3 +21,5 @@ let editPost = async function(event) {
         console.log("edit post failed");
     }
 }
+
+editPostForm.addEventListener("submit", editPost);

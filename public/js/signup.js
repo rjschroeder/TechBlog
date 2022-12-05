@@ -1,12 +1,9 @@
-let signupForm = document.querySelector("#signupForm");
-
-let signup = async function(event) {
-    event.preventDefault();
+let signupf = async function(event) {
     let enteredUsername = document.querySelector("#username-input-signup");
     let enteredEmail = document.querySelector("#email-input-signup");
     let enteredPassword = document.querySelector("#password-input-signup");
 
-    let response = await fetch("/api/users/new", {
+    const response = await fetch("/api/users/new", {
         method: "POST",
         body: JSON.stringify({
             username: enteredUsername.value,
@@ -23,4 +20,6 @@ let signup = async function(event) {
     }
 }
 
-signupForm.addEventListener("submit", signup);
+document
+  .querySelector('#signupForm')
+  .addEventListener('submit', signupf);

@@ -5,7 +5,7 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
     try {
         let postData = await Post.findAll({
-            include: [{ all: true, nested: true }]
+            include: [User]
         })
 
         let posts = postData.map((post) => post.get({plain:true}))
@@ -21,7 +21,13 @@ router.get("/posts/:id", async (req, res) => {
             where: {
                 id: req.params.id
             },
-            include: [{ all: true, nested: true }]
+            include: [
+                User,
+                {
+                    model: Comment,
+                    include: [User]
+                }
+            ]
         })
 
         if(postData) {

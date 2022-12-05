@@ -9,9 +9,13 @@ router.get("/", withAuth, async (req, res) => {
                 user_id: req.session.user_id
             }
         })
-        //render posts
+        let posts = postData.map((post) => post.get({plain:true}));
+        res.render('feed', {
+            layout: "dashboard",
+            posts
+        })
     } catch (err) {
-        //redirect 
+        res.redirect("login")
     }
 })
 

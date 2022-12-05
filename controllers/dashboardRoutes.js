@@ -37,9 +37,17 @@ router.get("/edit/:id", withAuth, async (req, res) => {
             }
         })
 
-        //render edit post
+        if (postData){
+            let posts = postData.map((post) => post.get({plain:true}));
+            res.render("edit", {
+                layout: "dashboard",
+                post
+            })
+        } else {
+            res.status(500)
+        }
     } catch (err) {
-        //redirect 
+        res.redirect("login")
     }
 })
 

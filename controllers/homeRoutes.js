@@ -35,7 +35,11 @@ router.get("/post/:id", withAuth, async (req, res) => {
 
 router.get("/login", withAuth, async (req, res) => {
     try {
-
+        if(req.session.loggedIn) {
+            res.redirect("/");
+            return;
+        }
+        res.status(200).json({ message: "will login here"})
     } catch (err) {
         res.status(500).json(err);
     }
@@ -43,7 +47,11 @@ router.get("/login", withAuth, async (req, res) => {
 
 router.get("/signup", withAuth, async (req, res) => {
     try {
-
+        if(req.session.loggedIn) {
+            res.redirect("/");
+            return;
+        }
+        res.status(200).json({ message: "will signup here"})
     } catch (err) {
         res.status(500).json(err);
     }

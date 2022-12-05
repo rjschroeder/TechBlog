@@ -25,11 +25,12 @@ router.post("/login", async (req, res) => {
             }
         })
 
-        if (!userData) {
+        let checkPass = await userData.checkPassword(req.body.password);
+
+        if (!checkPass || !userData) {
             res.status(500).json({ message: "Invalid username or password"})
         }
 
-        
     } catch (err) {
         req.status(500).json(err);
     }

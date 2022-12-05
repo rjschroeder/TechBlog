@@ -15,7 +15,19 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/post/:id", withAuth, async (req, res) => {
     try {
-
+        let postData = await Post.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [
+                User,
+                {
+                    model: Comment,
+                    include: [User]
+                }
+            ]
+        })
+        res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -29,7 +41,7 @@ router.get("/login", withAuth, async (req, res) => {
     }
 })
 
-router.get("/signip", withAuth, async (req, res) => {
+router.get("/signup", withAuth, async (req, res) => {
     try {
 
     } catch (err) {

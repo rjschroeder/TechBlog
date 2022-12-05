@@ -33,6 +33,7 @@ router.post("/login", async (req, res) => {
 
         req.session.save(() => {
             req.session.user_id = userData.id;
+            req.session.username = userData.username;
             req.session.logged_in = true;
             res.status(200).json({ 
                 user: userData,
@@ -47,7 +48,13 @@ router.post("/login", async (req, res) => {
 
 router.post("/logout", async (req, res) => {
     try {
-
+        if(req.session.logged_in) {
+            req.session.destroy(() => {
+                res.status(200).end();
+            })
+        } else {
+            res.status(400).end();
+        }
     } catch (err) {
         req.status(500).json(err);
     }
